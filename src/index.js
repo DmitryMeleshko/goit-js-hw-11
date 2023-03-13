@@ -60,10 +60,16 @@ async function onClickBtn() {
     loadMoreBtn.hide();
     return;
   }
+
+  try{
   const hits = await apiServer.requestApi();
   requestApiMarkup(hits);
   lightbox.refresh();
   apiServer.incrementPage();
+  }
+  catch (error) {
+    console.log(error);
+  }
 }
 
 function requestApiMarkup(hits) {
